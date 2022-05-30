@@ -1,3 +1,5 @@
+import logging
+
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
@@ -6,6 +8,7 @@ from posts import Post, Posts
 app = Flask(__name__)
 CORS(app)
 posts = Posts()
+logging.basicConfig(level=logging.INFO, format='%(levelname)s %(asctime)s : %(message)s')
 
 
 @app.route('/post/<post_id>', methods=['GET'])
@@ -43,6 +46,7 @@ def get_posts():
 
 @app.errorhandler(Exception)
 def handle_bad_request(e):
+    logging.error("An error occurred: ", e)
     return {}, 400
 
 
