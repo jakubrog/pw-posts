@@ -1,0 +1,6 @@
+Flask~=2.0.2
+gunicorn
+requests~=2.26.0
+flask-cors
+google-cloud-bigquery
+marshmallow~=3.15.0
