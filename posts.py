@@ -49,8 +49,8 @@ class Posts:
                 lastModified = CURRENT_TIMESTAMP()
             WHERE id = @id
             """
-        query_parameters = [bigquery.ScalarQueryParameter("content", "STRING", title),
-                            bigquery.ScalarQueryParameter("title", "STRING", content),
+        query_parameters = [bigquery.ScalarQueryParameter("content", "STRING", content),
+                            bigquery.ScalarQueryParameter("title", "STRING", title),
                             bigquery.ScalarQueryParameter("id", "STRING", post_id)]
 
         query_job = self.client.query(query, job_config=bigquery.QueryJobConfig(query_parameters=query_parameters))
