@@ -63,8 +63,8 @@ class Posts:
                 GENERATE_UUID(), @content, @title, @author, CURRENT_TIMESTAMP()
             )
             """
-        query_parameters = [bigquery.ScalarQueryParameter("content", "STRING", title),
-                            bigquery.ScalarQueryParameter("title", "STRING", content),
+        query_parameters = [bigquery.ScalarQueryParameter("content", "STRING", content),
+                            bigquery.ScalarQueryParameter("title", "STRING", title),
                             bigquery.ScalarQueryParameter("author", "STRING", author)]
 
         query_job = self.client.query(query, job_config=bigquery.QueryJobConfig(query_parameters=query_parameters))
